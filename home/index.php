@@ -3,6 +3,8 @@ header('Content-Type: text/html; charset=utf-8');
 define('APPLICATION_PORTAL','home');
 require_once '../app/init.php';
 
+
+
 try {
     $app = $factoryApplication();
     echo $app->handle()->getContent();

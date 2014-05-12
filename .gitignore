@@ -1,5 +1,5 @@
 app/tmp/*
-app/config/*.php
+app/config/config.php
 home/media/*
 
 .*
