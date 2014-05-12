@@ -1,0 +1,8 @@
+app/tmp/*
+app/config/*.php
+home/media/*
+
+.*
+!.gitignore
+!.htaccess
+!app/tmp/.htaccess
