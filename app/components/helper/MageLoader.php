@@ -50,7 +50,9 @@ class MageLoader
         else {
             // 第一次引用 mage
             require_once APPLICATION_SHOP_BASE_PATH . '/app/Mage.php';
+            umask(0);
             Mage::app();
+            Mage::getSingleton('core/session', array('name'=>'frontend') );
             self::$magento = spl_autoload_functions();
         }
 
@@ -62,9 +64,6 @@ class MageLoader
      */
     public static function end()
     {
-        //restore_error_handler();
-        //restore_exception_handler();
-
         // magento
         foreach( self::$magento as $obj ) {
             spl_autoload_unregister( $obj );
@@ -76,6 +75,8 @@ class MageLoader
         }
         self::$origin = array();
 
+        restore_error_handler();
+        restore_exception_handler();
     }
 
 }

@@ -1,0 +1,17 @@
+<?php
+
+MageLoader::start();
+
+foreach( $categories as $category ) {
+    $url = url('category/'. $category->getId() );
+    echo <<<EOD
+        <a href="{$url}">{$category->getName()}</a>
+        ({$category->getProductCount()})
+        <br />
+EOD;
+
+    // pr(get_class_methods($category));
+}
+// pr(get_class_methods($categories)); 
+
+MageLoader::end();

@@ -11,7 +11,16 @@
         'action'     => 'index',
     ));
 
+    $router->add('/category/([0-9]+)', array(
+        'controller' => 'category',
+        'action'     => 'list',
+        'categoryId' => 1,
+    ));
 
+    $router->add('/category', array(
+        'controller' => 'category',
+        'action'     => 'index',
+    ));
 
 
     // not found

@@ -1,10 +1,49 @@
 <?php
 
 MageLoader::start();
+    echo $product->getId();
+    echo '<br />';
     echo $product->getName();
     echo '<br />';
     echo $product->getPrice();
     echo '<br />';
+
+    /*
+    $data = $product->getData();
+    $data = $data['stock_item']->getData();
+    echo 'add to cart:';
+    echo $data['ordered_items'];
+    echo '<br />';
+    */
+
+    //echo Mage::app()->getStore()->getCode();
+    //echo '<br />';
+    //echo DS;
+    //echo '<br />';
+    //echo BP;
+    //echo '<br />';
+
+
+
+$session = Mage::getSingleton('checkout/session');
+
+$output = "";
+foreach ($session->getQuote()->getAllItems() as $item) {
+    $output .= 'SKU:   '. $item->getSku() . "<br>";
+    $output .= 'name:  '. $item->getName() . "<br>";
+    $output .= 'qty:   '. $item->getQty() . "<br>";
+    $output .= 'price: '. $item->getBaseCalculationPrice() . "<br>";
+    $output .= "</br>";
+}
+
+echo '<br />';
+echo '--------------------------------------------------------------------------------<br />';
+echo 'Cart <br />';
+echo '--------------------------------------------------------------------------------<br />';
+echo $output;
+
+
+
 MageLoader::end();
 ?>
 --------

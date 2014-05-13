@@ -11,9 +11,8 @@ SetEnvIf Host "training.simplybridal.com"   IS_DEVELOPER_MODE=1
 
 ##################################################
 <IfModule mod_rewrite.c>
-    RewriteEngine on
-    # RewriteRule  ^$ public/    [L]
-    # RewriteRule  (.*) public/$1 [L]
+    RewriteEngine On
+    RewriteBase /buy
 
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
