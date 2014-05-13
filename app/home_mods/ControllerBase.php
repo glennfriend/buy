@@ -9,17 +9,6 @@ class ControllerBase extends Phalcon\Mvc\Controller
         $this->assets
             ->addJs('js/jquery/jquery-2.0.3.js');
 
-        /* masonry.pkgd.min.js. The cascading grid layout library. http://masonry.desandro.com/
-           masonry.css. Build by our self and define style for masonry div.
-           jquery.sidr.min.js and jquery.sidr.dark.css. For the slider bar.
-        */
-        $this->assets
-            ->addJs('js/masonry.pkgd.min.js'      )
-            ->addJs('js/jquery.sidr.min.js'      )
-            ->addJs('js/waterfall.js'      )
-            ->addCss('css/jquery.sidr.light.css')
-            ->addCss('css/masonry.css');
-
         logBrg::frontend( $this->dispatcher->getControllerName(), $this->dispatcher->getActionName() );
     }
 
