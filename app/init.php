@@ -4,6 +4,13 @@ error_reporting(E_ALL ^ E_NOTICE);
 ini_set('html_errors','Off');
 ini_set('display_errors','Off');
 
+// debug mode
+if (isset($_SERVER['IS_DEVELOPER_MODE'])) {
+    error_reporting(E_ALL);
+    ini_set('html_errors','On');
+    ini_set('display_errors','On');
+}
+
 if ( !in_array('phalcon', get_loaded_extensions() ) ) {
     echo 'Framework Disabled';
     exit;
