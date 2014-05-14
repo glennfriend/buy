@@ -83,8 +83,11 @@ $factoryApplication = function()
     };
     $zendLoader();
 
+    // event init
+    Ydin\Event::init( APPLICATION_BASE_PATH . '/app/event' );
+
     // init footer
-    EventManager::notify('init_footer', array('app'=>$app) );
+    Ydin\Event::notify('init_footer', array('app'=>$app) );
 
     return $app;
 };

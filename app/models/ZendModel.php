@@ -99,7 +99,7 @@ class ZendModel
         $zendSql = new Zend\Db\Sql\Sql($adapter);
 
         //
-        EventManager::notify('sql_query_before', array(
+        Ydin\Event::notify('sql_query_before', array(
             'adapter' => $adapter,
             'select'  => $select,
         ));
@@ -131,7 +131,7 @@ class ZendModel
         $sql = $write->getSqlString( $adapter->getPlatform() );
 
         //
-        EventManager::notify('sql_execute_before', array(
+        Ydin\Event::notify('sql_execute_before', array(
             'adapter' => $adapter,
             'select'  => $select,
         ));
