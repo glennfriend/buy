@@ -39,6 +39,7 @@ $factoryApplication = function()
         $appPath .'/components/helper/',
         $appPath .'/components/identity/',
         $appPath .'/components/manager/',
+        $appPath .'/components/magento/',
         $appPath .'/'. APPLICATION_PORTAL .'_mods/',
         $appPath .'/'. APPLICATION_PORTAL .'_mods/components/',
     ));
