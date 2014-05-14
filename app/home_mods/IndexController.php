@@ -5,27 +5,42 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        
-        $this->addToCart();
-        $product = $this->getProduct();
+        // $this->view->setVars();
+    }
 
-        //$product = $this->getProduct2();
+    public function productAction( $url )
+    {
+        $url = trim($url);
+        $product = MageProduct::getByUrl( $url );
 
         $this->view->setVars(array(
             'product' => $product
         ));
     }
 
-    protected function getProduct()
+    public function addToCartAction( $url )
     {
-        // get product url key
-        $url = 'sleeve/helena-gown';
-        $url = 'f90001.html';
-
+        $url = trim($url);
         $product = MageProduct::getByUrl( $url );
 
+        $params = array(
+            'product' => $product->getId(),
+            'qty' => 1,
+            //'price' => 50,
+            //'amount' => 20,
+            //$productId => 1,
+            //$productId => array('qty' => 1),
+        );
+        MageCart::addByOptions( $params );
 
-        return $product;
+        $this->redirect( $url );
+    }
+
+    public function clearCartAction()
+    {
+        MageCart::clear();
+
+        $this->redirect('');
     }
 
     protected function getCategory()
@@ -42,20 +57,5 @@ class IndexController extends ControllerBase
         */
     }
 
-    protected function addToCart()
-    {
-        $productId = 2;
-        $params = array(
-            'product' => $productId,
-            'qty' => 1,
-            //'price' => 50,
-            //'amount' => 20,
-            //$productId => 1,
-            //$productId => array('qty' => 1),
-        );
-
-        MageCart::addByOptions( $params );
-
-    }
 
 }

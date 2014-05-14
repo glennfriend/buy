@@ -68,7 +68,7 @@ class MageCart
 
                 $cart = Mage::getModel('checkout/cart');
                 $cart->init();
-                $cart->addProduct($product, $params);
+                $cart->addProduct($product, $options);
                 $cart->save();
 
             }

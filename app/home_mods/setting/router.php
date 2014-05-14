@@ -11,6 +11,26 @@
         'action'     => 'index',
     ));
 
+    // try product page
+    $router->add('/([a-z0-9]+\.html)', array(
+        'controller' => 'index',
+        'action'     => 'product',
+        'url'        => 1,
+    ));
+
+    // add to cart
+    $router->add('/cart/add/([a-z0-9]+\.html)', array(
+        'controller' => 'index',
+        'action'     => 'addToCart',
+        'url'        => 1,
+    ));
+
+    // clear your cart
+    $router->add('/cart/clear', array(
+        'controller' => 'index',
+        'action'     => 'clearCart',
+    ));
+
     $router->add('/category/([0-9]+)', array(
         'controller' => 'category',
         'action'     => 'list',
