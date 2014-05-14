@@ -18,20 +18,12 @@ class IndexController extends ControllerBase
 
     protected function getProduct()
     {
-        MageLoader::start();
-
         // get product url key
-        $vPath = 'sleeve/helena-gown';
-        $vPath = 'f90001.html';
+        $url = 'sleeve/helena-gown';
+        $url = 'f90001.html';
 
-        $oRewrite = Mage::getModel('core/url_rewrite')
-                        ->setStoreId(Mage::app()->getStore()->getId())
-                        ->loadByRequestPath($vPath);
+        $product = MageProduct::getByUrl( $url );
 
-        $productId = $oRewrite->getProductId();
-        $product = Mage::getModel('catalog/product')->load($productId);
-
-        MageLoader::end();
 
         return $product;
     }
@@ -52,8 +44,6 @@ class IndexController extends ControllerBase
 
     protected function addToCart()
     {
-        MageLoader::start();
-
         $productId = 2;
         $params = array(
             'product' => $productId,
@@ -64,41 +54,8 @@ class IndexController extends ControllerBase
             //$productId => array('qty' => 1),
         );
 
-        try {
-            $product = Mage::getModel('catalog/product')->load( $productId );
-            // $product->setSpecialPrice( 50 );
-            // $product->save();
+        MageCart::addByOptions( $params );
 
-            $cart = Mage::getModel('checkout/cart');
-            $cart->init();
-            $cart->addProduct($product, $params);
-            $cart->save();
-
-            // clear cart items
-            // $cart->truncate();
-
-            /*
-                // clear cart items
-                $cartHelper = Mage::helper('checkout/cart');
-                $items = $cartHelper->getCart()->getItems();        
-                foreach ($items as $item) 
-                {
-                   $itemId = $item->getItemId();
-                   $cartHelper->getCart()->removeItem($itemId)->save();
-                } 
-            */
-
-        }
-        catch(Exception $e) {
-            pr( $e->getMessage() );
-            pr( $e );
-            exit;
-        }
-
-
-        Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
-
-        MageLoader::end();
     }
 
 }
