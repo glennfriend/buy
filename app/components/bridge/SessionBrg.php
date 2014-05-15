@@ -13,12 +13,20 @@ class SessionBrg
      */
     public static function init()
     {
+        // TODO: 只是測試, 實際上並沒有要將兩個 framework 的 session 放一起!!
+        session_save_path( APPLICATION_SHOP_BASE_PATH . '/var/session/' );
+
+        setcookie( 
+            session_name(),
+            session_id( $_COOKIE[APPLICATION_SHOP_COOKIE_NAME] ),
+            time() + APPLICATION_LOGIN_LIFETIME,
+            "/"
+        );
+
         $session = new Phalcon\Session\Adapter\Files(array(
             'uniqueId' => APPLICATION_PRIVATE_DYNAMIC_CODE
         ));
         $session->start();
-
-        setcookie( session_name(), session_id(), time() + APPLICATION_LOGIN_LIFETIME, "/" );
         
         self::$session = $session;
     }

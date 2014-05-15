@@ -51,8 +51,13 @@ class MageLoader
             // 第一次引用 mage
             require_once APPLICATION_SHOP_BASE_PATH . '/app/Mage.php';
             umask(0);
+
             Mage::app();
-            Mage::getSingleton('core/session', array('name'=>'frontend') );
+            Mage::getSingleton('core/session', array(
+                'name' => APPLICATION_SHOP_COOKIE_NAME
+            ));
+            // $session = Mage::getSingleton('customer/session', array('name'=>APPLICATION_SHOP_COOKIE_NAME));
+
             self::$magento = spl_autoload_functions();
         }
 

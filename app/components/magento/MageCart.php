@@ -73,6 +73,7 @@ class MageCart
 
             }
             catch(Exception $e) {
+                // TODO: 請改成 寫入 report log, 並提示 error report id
                 pr( $e->getMessage() );
                 pr( $e );
                 exit;
