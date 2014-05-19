@@ -1,15 +1,5 @@
 <?php
 
-    $categoryUrl  = url('category');
-    $clearCartUrl = url('cart/clear');
-    echo <<<EOD
-        <a href="{$categoryUrl}">Categories list</a>
-        <br />
-        <a href="{$clearCartUrl}">Clear you Cart</a>
-        <br />
-EOD;
-
-
 MageLoader::start();
 
     $session = Mage::getSingleton('checkout/session');

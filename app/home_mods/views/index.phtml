@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <title><?php echo RegisterManager::get('title'); ?></title>
+    <meta name="description" content="">
     <?php $this->assets->outputCss() ?>
     <?php $this->assets->outputJs() ?>
     <script type="text/javascript">
-        // lose
     </script>
 </head>
     <body class="downitem-bg">
+        <nav>
+            <?php echo block('Navigation')->toHtml(); ?>
+        </nav>
         <?php echo $this->getContent() ?>
     </body>
 </html>

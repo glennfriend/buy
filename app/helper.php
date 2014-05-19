@@ -27,6 +27,22 @@ function url( $route, $params=null )
 }
 
 /**
+ *  Block
+ */
+function block( $key )
+{
+    $className = 'Blocks\\' . trim($key) . '\\Block';
+    try {
+        return new $className();
+    }
+    catch( Exception $e ) {
+        // TODO: 改成 report
+        pr($e);
+        exit;
+    }
+}
+
+/**
  *  escape 顯示資料, 本是屬於 ccHelper 的部份
  *  因為使用率極高, 所以設定成 helper function
  *

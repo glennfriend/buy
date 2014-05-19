@@ -49,6 +49,7 @@ $factoryApplication = function()
     ));
     $loader->registerNamespaces(array(
         'Whoops'                => $appPath .'/vendors/whoops/',
+        'Blocks'                => $appPath .'/'. APPLICATION_PORTAL .'_mods/blocks/',
     ));
     $loader->register();
 
