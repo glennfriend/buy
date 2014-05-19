@@ -16,18 +16,23 @@ class SessionBrg
         // TODO: 只是測試, 實際上並沒有要將兩個 framework 的 session 放一起!!
         session_save_path( APPLICATION_SHOP_BASE_PATH . '/var/session/' );
 
-        setcookie( 
-            session_name(),
-            session_id( $_COOKIE[APPLICATION_SHOP_COOKIE_NAME] ),
-            time() + APPLICATION_LOGIN_LIFETIME,
-            "/"
-        );
+        // 設定跟 magento 一樣的 cookie name
+        session_name(APPLICATION_SHOP_COOKIE_NAME);
+
+        // 每次進來都重新變更 life time
+        if ( isset( $_COOKIE[APPLICATION_SHOP_COOKIE_NAME] ) ) {
+            setcookie(
+                APPLICATION_SHOP_COOKIE_NAME,
+                session_id( $_COOKIE[APPLICATION_SHOP_COOKIE_NAME] ),
+                time() + APPLICATION_LOGIN_LIFETIME,
+                "/"
+            );
+        }
 
         $session = new Phalcon\Session\Adapter\Files(array(
             'uniqueId' => APPLICATION_PRIVATE_DYNAMIC_CODE
         ));
         $session->start();
-        
         self::$session = $session;
     }
 
