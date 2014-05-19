@@ -11,18 +11,18 @@ class MageSession
     {
         MageLoader::start();
 
-        $items = array();
+            $items = array();
 
-        $session = Mage::getSingleton('checkout/session');
-        foreach ( $session->getQuote()->getAllItems() as $item ) {
-            $sku = $item->getSku();
-            $items[$sku] = array(
-                'sku'   => $sku,
-                'name'  => $item->getName(),
-                'qty'   => $item->getQty(),
-                'price' => $item->getBaseCalculationPrice(),
-            );
-        }
+            $session = Mage::getSingleton('checkout/session');
+            foreach ( $session->getQuote()->getAllItems() as $item ) {
+                $sku = $item->getSku();
+                $items[$sku] = array(
+                    'sku'   => $sku,
+                    'name'  => $item->getName(),
+                    'qty'   => $item->getQty(),
+                    'price' => $item->getBaseCalculationPrice(),
+                );
+            }
 
         MageLoader::end();
         return $items;
@@ -35,11 +35,12 @@ class MageSession
     static public function getCartItemsCount()
     {
         MageLoader::start();
-        $count = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+
+            $count = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+
         MageLoader::end();
         return $count;
     }
-
 
 
 }

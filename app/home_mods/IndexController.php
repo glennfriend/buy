@@ -26,10 +26,8 @@ class IndexController extends ControllerBase
         $params = array(
             'product' => $product->getId(),
             'qty' => 1,
-            //'price' => 50,
-            //'amount' => 20,
-            //$productId => 1,
-            //$productId => array('qty' => 1),
+            //'price' => 123,
+            //'amount' => 456,
         );
         MageCart::addByOptions( $params );
 

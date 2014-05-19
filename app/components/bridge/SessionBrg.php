@@ -33,6 +33,7 @@ class SessionBrg
             'uniqueId' => APPLICATION_PRIVATE_DYNAMIC_CODE
         ));
         $session->start();
+
         self::$session = $session;
     }
 
