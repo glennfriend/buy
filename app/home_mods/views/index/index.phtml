@@ -1,15 +1,13 @@
 <?php
 
-MageLoader::start();
 
-    $session = Mage::getSingleton('checkout/session');
 
     $output = "";
-    foreach ($session->getQuote()->getAllItems() as $item) {
-        $output .= 'SKU:   '. $item->getSku() . "<br>";
-        $output .= 'name:  '. $item->getName() . "<br>";
-        $output .= 'qty:   '. $item->getQty() . "<br>";
-        $output .= 'price: '. $item->getBaseCalculationPrice() . "<br>";
+    foreach ( MageSession::getCartItems() as $item ) {
+        $output .= 'SKU:   '. $item['sku']   . "<br>";
+        $output .= 'name:  '. $item['name']  . "<br>";
+        $output .= 'qty:   '. $item['qty']   . "<br>";
+        $output .= 'price: '. $item['price'] . "<br>";
         $output .= "</br>";
     }
 
@@ -19,5 +17,5 @@ MageLoader::start();
     echo '--------------------------------------------------------------------------------<br />';
     echo $output;
 
-MageLoader::end();
+
 
