@@ -53,10 +53,12 @@ class MageLoader
             umask(0);
 
             Mage::app();
+            /*
             Mage::getSingleton('core/session', array(
                 'name' => APPLICATION_SHOP_COOKIE_NAME
             ));
             // $session = Mage::getSingleton('customer/session', array('name'=>APPLICATION_SHOP_COOKIE_NAME));
+            */
 
             self::$magento = spl_autoload_functions();
         }

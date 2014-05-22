@@ -1,5 +1,10 @@
 <?php
 
+/*
+    TODO: 有 session 相關, 請確認是否放在這裡, 或改到
+        MageSession::clearCart()
+        MageSession::addCartOptions()
+*/
 class MageCart
 {
 

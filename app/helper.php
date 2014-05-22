@@ -27,22 +27,6 @@ function url( $route, $params=null )
 }
 
 /**
- *  Block
- */
-function block( $key )
-{
-    $className = 'Blocks\\' . trim($key) . '\\Block';
-    try {
-        return new $className();
-    }
-    catch( Exception $e ) {
-        // TODO: 改成 report
-        pr($e);
-        exit;
-    }
-}
-
-/**
  *  escape 顯示資料, 本是屬於 ccHelper 的部份
  *  因為使用率極高, 所以設定成 helper function
  *
@@ -125,13 +109,13 @@ function escape( $string, $esc_type = "html", $char_set = 'UTF-8' )
     }
 }
 
-
 /**
- *  cc ccHelper function call
+ *  cc block view helper
+ *  class call
  *
  *  example:
- *      cc('date',   time()       );
- *      cc('escape', $articleText );
+ *      cc('Date', time() );
+ *      cc('Date', time() )->toHtml();
  *
  *  @param helper function name
  *  @param param2
@@ -140,26 +124,32 @@ function escape( $string, $esc_type = "html", $char_set = 'UTF-8' )
  *  @param param5
  *  @return maybe have maybe not have
  */
-function cc()
+function cc( $key )
 {
     $numArgs = func_num_args();
     $args    = func_get_args();
     $func    = $args[0];
 
-    include_once( APPLICATION_BASE_PATH . '/app/components/ccHelper/'. $func .'.php');
-    $functionName = 'ccHelper_'. $func;
+    if ( $numArgs < 1 ) {
+        return '[cc error]';
+    }
 
-    switch( $numArgs )
-    {
-        case 1: return $functionName();                                         exit;
-        case 2: return $functionName( $args[1] );                               exit;
-        case 3: return $functionName( $args[1], $args[2] );                     exit;
-        case 4: return $functionName( $args[1], $args[2], $args[3]);            exit;
-        case 5: return $functionName( $args[1], $args[2], $args[3], $args[4] ); exit;
-        default:
-            return '[cc error]';
+    $className = 'Blocks\\' . trim($args[0]) . '\\Block';
+    try {
+        switch( $numArgs )
+        {
+            case 1: return new $className();                                         exit;
+            case 2: return new $className( $args[1] );                               exit;
+            case 3: return new $className( $args[1], $args[2] );                     exit;
+            case 4: return new $className( $args[1], $args[2], $args[3] );           exit;
+            case 5: return new $className( $args[1], $args[2], $args[3], $args[4] ); exit;
+            default:
+                return '[cc error2]';
+        }
+    }
+    catch( Exception $e ) {
+        echo '[cc error3]';
+        exit;
     }
 }
-
-
 

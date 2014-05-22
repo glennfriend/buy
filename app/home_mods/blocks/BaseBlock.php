@@ -6,9 +6,34 @@ class BaseBlock
 {
 
     /**
+     *  output value
+     */
+    protected $value = '';
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        // please rewrite
+    }
+
+    /**
+     *  quick output
+     */
+    public function __toString()
+    {
+        return $this->toHtml();
+    }
+
+    /* --------------------------------------------------------------------------------
+        
+    -------------------------------------------------------------------------------- */
+
+    /**
      *  讀取 template.php
      */
-    public function toHtml()
+    protected function getTemplate()
     {
         $className = get_class($this);
         $classNames = explode('\\', $className);
@@ -27,6 +52,14 @@ class BaseBlock
             $tmp = ob_get_contents();
         ob_end_clean();
         return $tmp;
+    }
+
+    /**
+     *  output
+     */
+    public function toHtml()
+    {
+        return $this->value;
     }
 
 }
