@@ -7,9 +7,8 @@
 
 
     // url
-    $di->set('url', new Phalcon\Mvc\Url );
     $di->set('escaper', new Phalcon\Escaper );
-
+    $di->set('url', new Phalcon\Mvc\Url );
     $di->get('url')->setBaseUri( APPLICATION_HOME_URI .'/' );
     UrlManager::init(array(
         'baseUri' => APPLICATION_HOME_URI
@@ -30,8 +29,8 @@
 
 
     // view component
-    $di->set('view', function(){
-        $view = new \Phalcon\Mvc\View;
+    $di->set('view', function() {
+        $view = new Phalcon\Mvc\View;
         $view->setViewsDir( APPLICATION_BASE_PATH . '/app/'. APPLICATION_PORTAL .'_mods/views/' );
         return $view;
     });
@@ -40,14 +39,16 @@
     $di->set('dispatcher', new Phalcon\Mvc\Dispatcher );
 
     //
-    $di->set('db', function(){
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+    /*
+    $di->set('db', function() {
+        return new Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host"      => APPLICATION_DB_MYSQL_HOST,
             "username"  => APPLICATION_DB_MYSQL_USER,
             "password"  => APPLICATION_DB_MYSQL_PASS,
             "dbname"    => APPLICATION_DB_MYSQL_DB,
         ));
     });
+    */
 
 
     /*
@@ -65,11 +66,7 @@
     });
 
 
-
     InputBrg::init($di);
-
-
-
 
 
     /*
@@ -91,5 +88,4 @@
 
 
     //Handle the request
-    return new \Phalcon\Mvc\Application($di);
-
+    return new Phalcon\Mvc\Application($di);

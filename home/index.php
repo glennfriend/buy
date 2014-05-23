@@ -9,4 +9,6 @@ try {
     echo $app->handle()->getContent();
 } catch( \Phalcon\Exception $e ) {
     echo "PhalconException: ", $e->getMessage();
+    echo '<br />';
+    echo nl2br(htmlentities( $e->getTraceAsString() ));
 }
