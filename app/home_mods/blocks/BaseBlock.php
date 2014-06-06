@@ -23,7 +23,7 @@ class BaseBlock
      */
     public function __toString()
     {
-        return $this->toHtml();
+        return $this->getTemplate();
     }
 
     /* --------------------------------------------------------------------------------

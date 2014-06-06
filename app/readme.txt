@@ -67,25 +67,29 @@ CMS 命名
         space
 
     Format by body tag:
-        [before]
         <body>
-            [header]
+            [start]
             [content]
-            [footer]
+            [end]
         </body>
-        [after]
 
-        body before     -> xxxxx-body-before
-        body header     -> xxxxx-body-header
-        body main       -> xxxxx-body-main
-        body footer     -> xxxxx-body-footer
-        body after      -> xxxxx-body-after
+                        xxxxx-body-start-before
+        body start   -> xxxxx-body-start
+                        xxxxx-body-start-after
+
+                        xxxxx-body-main-before
+        body main    -> xxxxx-body-main
+                        xxxxx-body-main-after
+        
+                        xxxxx-body-end-before
+        body end     -> xxxxx-body-end
+                        xxxxx-body-end-after
 
     Sample:
-        head 關閉前     -> xxxxx-head-footer
-        body 一開始     -> xxxxx-body-header
-        主要內容上方    -> xxxxx-content-header
-        主要內容下方    -> xxxxx-content-footer
+        head 關閉前     -> xxxxx-head-end-before
+        body 一開始     -> xxxxx-body-start
+        主要內容上方    -> xxxxx-content-start
+        主要內容下方    -> xxxxx-content-end
 
 
 
