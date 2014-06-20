@@ -13,6 +13,7 @@ class Client
 
     /**
      *  取得使用者 ip
+     *  PS. 千萬不要嘗試從 X-Forwarded-For 取得
      */
     public static function getIp()
     {
