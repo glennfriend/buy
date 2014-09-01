@@ -1,7 +1,13 @@
+
+#### Linux
+*~
+
+#### framework
 app/tmp/*
 app/config/config.php
 home/media/*
 
+####
 .*
 !.gitignore
 !.htaccess
