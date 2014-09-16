@@ -42,8 +42,14 @@
         'action'     => 'index',
     ));
 
+    $router->add('/product/([0-9a-z\-]+)', array(
+        'controller' => 'product',
+        'action'     => 'index',
+        'productKey' => 1,
+    ));
 
-    // not found
+
+    // not found - 開發時請關閉
     $router->notFound(array(
         "controller" => 'error',
         "action"     => 'index'

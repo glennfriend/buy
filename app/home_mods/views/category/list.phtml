@@ -3,17 +3,13 @@
 MageLoader::start();
 
 foreach ( $products as $product ) {
-    $url = url( $product->getUrlPath() );
+    $url = url( 'product/'. $product->getUrlPath() );
     echo <<<EOD
         <p>
-            <a href="{$url}">{$product->getName()}</a>
-            <br />
-            SKU: {$product->getSku()}
-            <br />
-            Weight: {$product->getWeight()}
-            <br />
-            Price: \${$product->getPrice()}
-            <br />
+            <a href="{$url}">{$product->getName()}</a><br />
+            SKU: {$product->getSku()}<br />
+            Weight: {$product->getWeight()}<br />
+            Price: \${$product->getPrice()}<br />
             Final Price: \${$product->getFinalPrice()}
         </p>
 EOD;
