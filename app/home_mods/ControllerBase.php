@@ -6,13 +6,11 @@ class ControllerBase extends Phalcon\Mvc\Controller
     protected function initialize()
     {
         $this->assets
-            ->addJs('dist/jquery/jquery-2.0.3.js');
+            ->addJs('dist/jquery/jquery-2.0.3.js')
+            ->addJs('dist/bootstrap/js/bootstrap.js');
 
-        /*
         $this->assets
-            ->addCss('dist/bootstrap/css/bootstrap.css')
-            ->addCss('dist/bootstrap/css/bootstrap-responsive.css');
-        */
+            ->addCss('dist/bootstrap/css/bootstrap.css');
 
         logBrg::frontend( $this->dispatcher->getControllerName(), $this->dispatcher->getActionName() );
     }
